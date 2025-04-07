@@ -28,6 +28,7 @@ void filter_ascending(char* string_1);
 
 int main()
 {
+    // get input, filter
     char string_1[20];
     printf("Enter the string: ");
     scanf("%s", string_1);
