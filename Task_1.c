@@ -26,12 +26,14 @@ argument, only the filtered string must be printed onto the terminal.
 
 void filter_ascending(char* string_1);
 
-int main()
+int main(int argc,char *argv[])
 {
-    // get input, filter
+    if (argc != 2)
+    {
+        return 0;
+    }
     char string_1[20];
-    printf("Enter the string: ");
-    scanf("%s", string_1);
+    sprintf(string_1, "%s", argv[1]);
     filter_ascending(string_1);
     printf("The modified string is: ");
     printf("%s\n", string_1);
@@ -42,11 +44,11 @@ void filter_ascending(char* string_1)
 {
     for (int i = 1; i < strlen(string_1); i++)
     {
-        for (int j = 0; string_1[j+2] != '\0'; j++)
+        for (int j = 0; string_1[j+1] != '\0'; j++)
         {
             if (string_1[j] > string_1[j+1])
             {
-                for (int k = 0; string_1[k] != '\0'; k++)
+                for (int k = j+1; string_1[k] != '\0'; k++)
                 {
                     string_1[k] = string_1[k+1];
                 }
