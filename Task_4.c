@@ -29,10 +29,10 @@ int* compute_array(char* string_combined)
         }
     }
     // counts the number of same characters based on the spacing of the string, where the spacing is equal to
-    // the index of the initial character, it goes through each character and get their indexes, which will be
+    // the index of the character, it goes through each character and get their indexes, which will be
     // the spacing to compare 2 characters, since it goes through each character, the index gradually increases
     // it will compare until the end of the string.
-    // the compare starts from the first character of the string
+    // the compare starts from the first character of the string, to the character which index is taken
     return array_1;
 }
 
