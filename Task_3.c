@@ -109,7 +109,7 @@ void split_list(struct node **Header_1, struct node **Header_2, int count_nodes)
 {
 	struct node* prevPtr = NULL;
 	struct node* curPtr = (*Header_1);
-	for (int i = 0; i <= count_nodes; i++)
+	for (int i = 0; i < count_nodes; i++)
 	{
 		if (curPtr != NULL)
 		{
@@ -123,7 +123,7 @@ void split_list(struct node **Header_1, struct node **Header_2, int count_nodes)
 	}
 	else
 	{
-		curPtr->nextPtr = NULL;
+		prevPtr->nextPtr = NULL;
 		(*Header_2) = curPtr;
 	}
 }

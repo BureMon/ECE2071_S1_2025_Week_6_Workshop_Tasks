@@ -30,6 +30,7 @@ tree, where the data in the printed output is delimited using one whitespace cha
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct node
 {
@@ -42,16 +43,17 @@ void insert_node(struct node** treePtr, int data);
 void inOrder(struct node* treePtr);
 void delete_tree(struct node** treePtr);
 
-int main() {
-	int temp = 0;
+int main(int argc, char *argv[]) {
+	if (argc != 2) {
+		return 0;
+	}
+	char *tokPtr = strtok(argv[1], ",");
 	struct node* treePtr = NULL;
-    printf("Enter the value of the new data member: ");
-	scanf("%d", &temp);
-    while (temp > 0)
+
+    while (tokPtr!=NULL)
     {
-        insert_node(&treePtr, temp);
-        printf("Enter the value of the new data member: ");
-        scanf("%d", &temp);            
+        insert_node(&treePtr, atoi(tokPtr));
+        tokPtr = strtok(NULL, ",");   
     }
     printf("Initial version of binary tree:\n");
     inOrder(treePtr);
@@ -97,10 +99,11 @@ void inOrder(struct node* treePtr)
 
 void delete_tree(struct node** treePtr)
 {
-	if (treePtr != NULL)
+	if (*treePtr != NULL)
 	{
-       free(*treePtr);
 	   delete_tree(&((*treePtr)->leftPtr));
        delete_tree(&((*treePtr)->rightPtr));
+	   free(*treePtr);
+	   *treePtr = NULL; // assign null to pointer, because right subtree is erased, so root's right is null
 	}
 }

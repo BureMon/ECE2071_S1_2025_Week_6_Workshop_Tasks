@@ -32,11 +32,10 @@ int main(int argc,char *argv[])
     {
         return 0;
     }
-    char string_1[20];
-    sprintf(string_1, "%s", argv[1]);
-    filter_ascending(string_1);
+    // directly plug in the argument
+    filter_ascending(argv[1]);
     printf("The modified string is: ");
-    printf("%s\n", string_1);
+    printf("%s\n", argv[1]);
 	return 0;
 }
 
